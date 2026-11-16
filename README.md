@@ -25,21 +25,17 @@ I build backends that hold up under real users and occasionally go one layer dee
 ## 🚀 Featured
 
 ### [neoRMS](https://github.com/naim1405/neoRMS-backend) — multi-tenant restaurant platform
-Backend for a 6-service platform, coordinated as a git-submodule monorepo. **13 modules over a 23-entity Prisma schema** covering orders, inventory, tables, coupons, payments, and AI-scored reviews.
-
-What's interesting in the code: tenant isolation enforced as a per-request middleware that re-verifies user→tenant membership against Postgres — and the **same guard extended to the Socket.IO handshake**, which is where most multi-tenant systems quietly leak. Three role-scoped namespaces (waiter / chef / customer) push order state over rooms. SSLCommerz checkout with a deliberately unauthenticated server-to-server `IPN` callback and server-side verification.
+Backend for a 6-service platform, coordinated as a git-submodule monorepo: **13 modules over a 23-entity Prisma schema**. Tenant isolation is re-verified per request *and* at the **Socket.IO handshake** — where multi-tenant systems usually leak — with three role-scoped real-time namespaces and SSLCommerz checkout using server-verified IPN callbacks.
 
 `TypeScript` `Express` `Prisma` `PostgreSQL` `Socket.IO` · *Brain Station 23 industrial attachment*
 
 ### [VisionGuard.ai](https://github.com/naim1405/visionguard) — real-time shoplifting detection
-Camera feeds streamed over WebRTC to a live Next.js dashboard, with alerts pushed over persistent WebSockets. Server GPU cost cut by moving person detection client-side and chaining **YOLO** with an **STG-NF** pose-anomaly model; Telegram alerting plus heartbeat-based reconnect for unreliable networks.
-
-**SOLVIO AI Hackathon 2025 — 1st Runner-Up** out of 20 finalist teams.
+Camera feeds over WebRTC into a live Next.js dashboard with real-time alerts. Server GPU cost cut by moving person detection client-side and chaining **YOLO** with an **STG-NF** pose-anomaly model. **SOLVIO AI Hackathon 2025 — 1st Runner-Up** of 20 finalist teams.
 
 `Python` `PyTorch` `aiortc` `Next.js`
 
 ### [nullOS](https://github.com/naim1405/nullOS) — x86 kernel from scratch
-A 32-bit kernel written from nothing in C and Assembly: bootloader → protected mode, higher-half memory layout, GDT, IDT, PIC remapping, IRQ-driven keyboard and serial drivers, page table mappers. Currently at a booting higher-half kernel; memory management and scheduling are next.
+A 32-bit kernel built from nothing in C and Assembly: bootloader → protected mode, higher-half memory layout, GDT, IDT, PIC remapping, IRQ-driven drivers, paging. Currently a booting higher-half kernel; memory management next.
 
 `C` `x86 Assembly` `QEMU` `Makefile`
 
